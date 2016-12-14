@@ -20,10 +20,33 @@ form do |f|
     f.input :notes
     f.input :video_link
     f.input :price
+    f.input :text1
+    f.input :text2
+    f.input :text3
+    f.input :text4
     f.input :image, as: :file
   end
+
+  f.inputs do
+    f.has_many :lessons do |lesson|
+      lesson.input :name
+      lesson.input :description
+      lesson.input :content
+      lesson.input :notes
+    end
+  end
+
+  f.inputs do
+    f.has_many :reviews do |review|
+      review.input :comment
+      review.input :rating
+      review.input :user
+    end
+  end
+
   f.actions
 end
+
 controller do
   def permitted_params
     params.permit!

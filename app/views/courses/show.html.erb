@@ -1,29 +1,100 @@
-<p id="notice"><%= notice %></p>
+  <h1 class="text-center"><%= @course.name %></h1>
+  </br>
+  
+  <!-- the class "videoWrapper169" means a 16:9 aspect ration video. Another option is "videoWrapper43" for 4:3. -->
+  <div class="videoWrapper videoWrapper169 js-videoWrapper">
+    <!-- YouTube iframe. -->
+    <!-- note the iframe src is empty by default, the url is in the data-src="" argument -->
+    <!-- also note the arguments on the url, to autoplay video, remove youtube adverts/dodgy links to other videos, and set the interface language -->
+    <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="https://www.youtube.com/embed/hgzzLIa-93c?autoplay=1& modestbranding=1&rel=0&hl=sv"></iframe>
+    <!-- the poster frame - in the form of a button to make it keyboard accessible -->
+    <button class="videoPoster js-videoPoster" style="background-image:url(http://i2.wp.com/www.cgmeetup.net/home/wp-content/uploads/2015/05/Avengers-Age-of-Ultron-UI-Reel-1.jpg);">Play video</button>
+  </div>
+  
+  <button onclick="videoStop()">Restart the video</button>
+  
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<!--   <div class="videoWrapper videoWrapper169 js-videoWrapper">
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+    <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="<%= @course.video_link %>"></iframe>
+    <button class="videoPoster js-videoPoster" style="background-image:<%= image_tag(@course.image.url(:medium)) %>;">Play video</button>
+  </div>
+  
+  <button onclick="videoStop()">Restart the video</button> -->
 
-<p>
-  <strong>Notes:</strong>
-  <%= @course.notes %>
-</p>
 
-<p>
-  <strong>Video link:</strong>
-  <%= @course.video_link %>
-</p>
+      <!-- START THE FEATURETTES -->
 
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
+      <hr class="featurette-divider">
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <p class="lead"><%= @course.text1 %></p>
+        </div>
+        <div class="col-md-5">
+          <i class="fa fa-info-circle fa-5x" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <p class="lead"><%= @course.text2 %><</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7 text-center">
+          <i class="fa fa-lemon-o fa-5x" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <p class="lead"><%= @course.text3 %><</p>
+        </div>
+        <div class="col-md-5">
+          <i class="fa fa-university fa-5x" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+<hr class="featurette-divider">
+
+<h2 class="text-center"> Lesson Plan </h2>
+
+<hr class="featurette-divider">
+
+
+<div class="lessons jumbotron">
+<% @course.lessons.each_with_index do |lesson,index| %>
+  <div class="row featurette">
+    <div class="col-md-2 text-center lesson-index">
+      <strong><%= index + 1 %></strong>
+    </div>
+    <div class="col-md-10">
+      <h3 class="featurette-heading"><%= lesson.name %></h2>
+      <p class="lead"><%= lesson.description %></p>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+<% end %>
+</div>
+
+<hr class="featurette-divider">
+
+<h2 class="text-center"> Reviews </h2>
+
+<hr class="featurette-divider">
+
+<% if @course.reviews %>
+  <div class="reviews">
+    <div class="row">
+      <%= render @course.reviews %>
+    </div>
+  </div>
+<% end %>
+

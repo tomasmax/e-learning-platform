@@ -1,35 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Courses</h1>
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <h1 class="text-center">Check all the courses</h1>
+</br>
+<p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+<p class="text-center">
+  <a class="btn btn-lg btn-primary text-center" href="../../components/#navbar" role="button">Enroll &raquo;</a>
+</p>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Notes</th>
-      <th>Video link</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr class="featurette-divider">
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.notes %></td>
-        <td><%= course.video_link %></td>
-        <td><%= course.price %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Courses</h1>
+
+
+<% @courses.each do |course| %>
+
+<%= render course %>
+
+<hr class="featurette-divider">
+</br>
+<% end %>
 
 <br>
-
-<%= link_to 'New Course', new_course_path %>
+<!-- 
+  <%= link_to 'New Course', new_course_path %> -->
