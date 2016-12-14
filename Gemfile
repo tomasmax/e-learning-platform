@@ -40,6 +40,8 @@ gem 'devise', '~> 4.2'
 gem "paperclip", "~> 5.0.0"
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'responders'
+
 group :development, :test do
 
   gem 'rspec-rails', '~> 3.5'

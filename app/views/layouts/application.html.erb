@@ -21,10 +21,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><%= link_to "Courses", root_path %></li>
+            <% if current_user %>
+              <li><%= current_user.email %></li>
+              
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
